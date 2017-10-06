@@ -1,0 +1,31 @@
+---
+title: "R markdown and Plotly"
+author: "Theo Livingwell"
+date: "October 5, 2017"
+output: html_document
+---
+
+## Web pesentation based on the airquality dataset in r
+## air quality data is loaded and stored in the variable my_data
+## The data is cleaned of all NAs and stored in my_clean_data
+
+```{r}
+my_data <- airquality
+str(my_data)
+my_clean_data <- na.omit(my_data)
+str(my_clean_data)
+
+```
+
+## load plotly, use plotly to make a histogram of my_clean_data
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+library(plotly)
+my_plot <- plot_ly(my_clean_data, type = "histogram", x=my_clean_data$Ozone, y=my_clean_data$Temp, mode = "markers", color = "red")
+my_plot
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
